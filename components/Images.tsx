@@ -4,6 +4,8 @@ import Image from "next/image";
 import useSWR from "swr";
 import fetchImages from "../lib/fetchImages";
 
+export const dynamic = "force-dynamic";
+
 type ImageType = {
   name: string;
   url: string;
