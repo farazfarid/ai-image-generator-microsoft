@@ -6,7 +6,7 @@ import { FormEvent, useState } from "react";
 import useSWR from "swr";
 import toast from "react-hot-toast";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 function PromptInput() {
   const [input, setInput] = useState("");
@@ -100,6 +100,7 @@ function PromptInput() {
           className="p-4 bg-sky-300 text-white transition-colors duration-200 font-bold disabled:text-gray-300 disabled:cursor-not-allowed disabled:bg-gray-400"
           type="button"
           onClick={() => submitPrompt(true)}
+          disabled={isLoading || isValidating}
         >
           Use Suggestion
         </button>
