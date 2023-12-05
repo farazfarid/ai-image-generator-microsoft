@@ -6,6 +6,8 @@ import { FormEvent, useState } from "react";
 import useSWR from "swr";
 import toast from "react-hot-toast";
 
+export const dynamic = 'force-dynamic';
+
 function PromptInput() {
   const [input, setInput] = useState("");
 
