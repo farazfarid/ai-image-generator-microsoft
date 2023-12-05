@@ -37,7 +37,7 @@ function PromptInput() {
     const notification = setInterval(() => {
       if (count > 0) {
         toast(
-          `DALL·E 3 is creating! Please refresh the page after ${count} seconds.`,
+          `DALL·E 3 is creating! Please refresh the images after ${count} seconds.`,
           { duration: 1000 }
         );
         count--;
