@@ -33,12 +33,18 @@ function PromptInput() {
     // p is the prompt to be submitted to the API
     const p = useSuggestion ? suggestion : inputPrompt;
 
-    const notificationPrompt = p;
-    const notificationPromptShort = notificationPrompt.slice(0, 20);
-
-    const notification = toast.loading(
-      `DALL·E 3 is creating! Due to Vercel's policy please refresh the page after a few seconds. Prompt: ${notificationPromptShort}`
-    );
+    let count = 8;
+    const notification = setInterval(() => {
+      if (count > 0) {
+        toast(
+          `DALL·E 3 is creating! Please refresh the page after ${count} seconds.`,
+          { duration: 1000 }
+        );
+        count--;
+      } else {
+        clearInterval(notification);
+      }
+    }, 1000);
 
     const res = await fetch("/api/generateImage", {
       method: "POST",
@@ -51,11 +57,9 @@ function PromptInput() {
     const data = await res.json();
 
     if (data.error) {
-      toast.error(`Error: ${data.error}`, { id: notification });
+      toast.error(`Error: ${data.error}`);
     } else {
-      toast.success(`Your AI Art has been generated!`, {
-        id: notification,
-      });
+      toast.success(`Your AI Art has been generated!`);
     }
 
     updateImages();
