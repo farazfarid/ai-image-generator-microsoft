@@ -37,7 +37,7 @@ function PromptInput() {
     const notificationPromptShort = notificationPrompt.slice(0, 20);
 
     const notification = toast.loading(
-      `DALL·E 3 is creating: ${notificationPromptShort} ...`
+      `DALL·E 3 is creating! Due to Vercel's policy please refresh the page after a few seconds. Prompt: ${notificationPromptShort}`
     );
 
     const res = await fetch("/api/generateImage", {
