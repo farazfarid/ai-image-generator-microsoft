@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import useSWR from "swr";
 import fetchImages from "../lib/fetchImages";
 
@@ -42,16 +41,19 @@ function Images() {
         {images?.imageURLs?.map((image: ImageType, i: number) => (
           <div
             key={image.name}
-            className={`relative cursor-help ${
+            className={`relative cursor-pointer ${
               i === 0 && "md:col-span-2 md:row-span-2"
             } hover:scale-[103%] transition-transform duration-200 ease-in-out`}
           >
-            <div className="absolute flex justify-center items-center w-full h-full bg-white opacity-0 hover:opacity-80 transition-opacity duration-200 z-10">
+            <a
+              className="absolute flex justify-center items-center w-full h-full bg-white opacity-0 hover:opacity-80 transition-opacity duration-200 z-10"
+              href={image.url}
+            >
               <p className="text-center font-light text-lg p-5">
                 {image.name.split("_").shift()?.toString().split(".").shift()}
               </p>
-            </div>
-            <Image
+            </a>
+            <img
               src={image.url}
               alt={image.name}
               height={800}
